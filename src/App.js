@@ -3,16 +3,8 @@ import Form from './components/form';
 
 const isLoggedIn = false;
 
-function renderConditionaly() {
-    if (isLoggedIn) {
-        return <h1 className="text-primary text-center font-weight-bold">Successfull</h1>
-    } else {
-        return <Form />
-    }
-}
-
 const App = () => {
-    return renderConditionaly();
+    return isLoggedIn ? <h1 className="text-primary text-center font-weight-bold">Successfull</h1> : <Form />
 }
 
 export default App;
