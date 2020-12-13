@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+}
+.row {
+    margin: 0 !important;
+}
+.main-form {
+    height: 100vh;
+}
+input {
+    border: 0px #fff solid !important;
+    outline: none !important;
+    background: #f2f2ff !important;
+    border-radius: 50px !important;
+    height: 48px !important;
+    padding-left: 16px !important;
+    font-size: 16px !important;
+}
+input:focus {
+    outline: none !important;
+}
