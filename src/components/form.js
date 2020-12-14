@@ -1,5 +1,8 @@
 import react from 'react';
 import Input from './input';
+import Btn from './login_btn';
+
+const isRegistered = true;
 
 const Form = () => {
     return (
@@ -11,8 +14,9 @@ const Form = () => {
                     </div>
                     <div className="form-group d-flex flex-column">
                         <Input placeholder="Password" type="password" id="password" />
+                        {isRegistered ? null : <Input placeholder="Confirm Password" type="password" id="cpassword" />}
                     </div>
-                    <button className="btn btn-outline-dark form-control">Login</button>
+                    {isRegistered ? <Btn text="Login" id="login-btn" /> : <Btn text="Register" id="register-btn" />}
                 </form>
             </div>
         </div>
