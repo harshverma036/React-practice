@@ -6,33 +6,34 @@ const isRegistered = true;
 
 const Form = () => {
 
-    const [heading, setHeadingText] = useState('Hello');
-    const [isMouseOver, setMouseOver] = useState(false);
+    const [heading, setHeadingText] = useState('');
+    const [name, setName] = useState('');
 
-    function handleMouseOver() {
-        setHeadingText(`${heading}, mouse over button`)
-        setMouseOver(true)
+    function handlechange(event){
+        let enteredValue = event.target.value;
+        setName(enteredValue);
     }
 
-    function handleMouseOut() {
-        setMouseOver(false);
+    function handleClick(event){
+        event.preventDefault();
+        setHeadingText(name);
     }
 
     return (
         <div className="row justify-content-center align-items-center main-form">
             <div className="col-lg-3 col-md-6 col-10">
-                <h2 className="text-danger">{heading}</h2>
-                <form>
+                <h1 className="text-danger text-center font-weight-bold">Hello {heading}</h1>
                     <div className="form-group d-flex flex-column">
-                        <Input placeholder="Username" type="text" id="username" />
+                        <input 
+                        className="" 
+                        placeholder="Username.." 
+                        type="text" 
+                        id="username"
+                        value={name}
+                        onChange={handlechange}
+                        />
                     </div>
-                    <div className="form-group d-flex flex-column">
-                        <Input placeholder="Password" type="password" id="password" />
-                        {isRegistered ? null : <Input placeholder="Confirm Password" type="password" id="cpassword" />}
-                    </div>
-                    {isRegistered ? <Btn text="Login" id="login-btn" /> : <Btn text="Register" id="register-btn" />}
-                    <button className="btn w-100 mt-3" style={isMouseOver ? { backgroundColor: 'black', color: 'white' } : { backgroundColor: 'white', color: 'black' }} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>Submit</button>
-                </form>
+                    <button className="btn btn-outline-dark form-control" onClick={handleClick}>Submit</button>
             </div>
         </div>
     );
