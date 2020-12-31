@@ -1,10 +1,8 @@
 import react from 'react';
-import Form from './components/form';
-
-const isLoggedIn = false;
+import Todo from './components/todo_list';
 
 const App = () => {
-    return isLoggedIn ? <h1 className="text-primary text-center font-weight-bold">Successfull</h1> : <Form />
+    return <Todo />
 }
 
 export default App;
