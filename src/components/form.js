@@ -1,39 +1,71 @@
 import react, { useState } from 'react';
-import Input from './input';
-import Btn from './login_btn';
-
-const isRegistered = true;
 
 const Form = () => {
 
-    const [heading, setHeadingText] = useState('');
-    const [name, setName] = useState('');
+    const [contact, setContact] = useState({
+        fname: '',
+        lname: '',
+        email: ''
+    });
 
-    function handlechange(event){
-        let enteredValue = event.target.value;
-        setName(enteredValue);
-    }
+    function handleChange(event) {
+        const {name, value} = event.target;
 
-    function handleClick(event){
-        event.preventDefault();
-        setHeadingText(name);
-    }
+        setContact((preval) => {
+            if (name === 'fname') {
+                return {
+                    fname: value,
+                    lname: preval.lname,
+                    email: preval.email
+                }
+            } else if (name === 'lname') {
+                   return {
+                       fname: preval.fname,
+                       lname: value,
+                       email: preval.email
+                   } 
+            } else if (name === 'email') {
+                  return {
+                      fname: preval.fname,
+                      lname: preval.lname,
+                      email: value
+                  }  
+            }
+        });
+    }   
 
     return (
         <div className="row justify-content-center align-items-center main-form">
             <div className="col-lg-3 col-md-6 col-10">
-                <h1 className="text-danger text-center font-weight-bold">Hello {heading}</h1>
+                <h1 className="text-danger text-center font-weight-bold">
+                    Hello {contact.fname} {contact.lname} {contact.email}</h1>
                     <div className="form-group d-flex flex-column">
                         <input 
                         className="" 
-                        placeholder="Username.." 
+                        placeholder="First Name.." 
                         type="text" 
-                        id="username"
-                        value={name}
-                        onChange={handlechange}
+                        name="fname"
+                        onChange={handleChange}
+
+                        />
+                        <input
+                        className="mt-2"
+                        placeholder="Last Name.."
+                        type="text"
+                        name="lname"
+                        onChange={handleChange}
+                        
+                        />
+                        <input
+                        className="mt-2"
+                        placeholder="Last Name.."
+                        type="text"
+                        name="email"
+                        onChange={handleChange}
+
                         />
                     </div>
-                    <button className="btn btn-outline-dark form-control" onClick={handleClick}>Submit</button>
+                    <button className="btn btn-outline-dark form-control">Submit</button>
             </div>
         </div>
     );
