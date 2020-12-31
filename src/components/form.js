@@ -12,24 +12,9 @@ const Form = () => {
         const {name, value} = event.target;
 
         setContact((preval) => {
-            if (name === 'fname') {
-                return {
-                    fname: value,
-                    lname: preval.lname,
-                    email: preval.email
-                }
-            } else if (name === 'lname') {
-                   return {
-                       fname: preval.fname,
-                       lname: value,
-                       email: preval.email
-                   } 
-            } else if (name === 'email') {
-                  return {
-                      fname: preval.fname,
-                      lname: preval.lname,
-                      email: value
-                  }  
+            return {
+                ...preval,
+                [name]: value
             }
         });
     }   
